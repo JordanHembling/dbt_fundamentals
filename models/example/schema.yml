@@ -9,8 +9,9 @@ models:
             description: "The primary key for this table"
             tests:
                 - unique
-                - not_null
-
+                - accepted_values:
+                    values: [1, 2, 3]
+                    quote: false
     - name: my_second_dbt_model
       description: "A starter dbt model"
       columns:
@@ -19,3 +20,19 @@ models:
             tests:
                 - unique
                 - not_null
+                - relationships:
+                    to: ref('my_first_dbt_model')
+                    field: id
+    - name: snowflake_customer_purchases
+      description: "The total purchases for each customer in snowflake sample data"
+      columns:
+         - name: c_custkey
+           tests:
+             - unique
+             - not_null
+    - name: cumulative_orders_by_date
+      description: "Sales and cumulative sales by date"
+      columns:
+         - name: date
+           tests:
+             - unique
