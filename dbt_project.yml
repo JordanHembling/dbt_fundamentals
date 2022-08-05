@@ -37,6 +37,12 @@ vars:
   my_second_variable: 2020
   my_third_variable: 1
 models:
+  snowflake_spend:
+    +enabled: false
+    +schema: spend 
+    xf:
+      snowflake_warehouse_metering_xf:
+        +enabled: false
   dbt_fundamentals:
     # Applies to all files under models/example/
       example:
@@ -44,3 +50,12 @@ models:
         pre-hook: "insert into dbt_jhembling.audit (model, state, time) values ('{{this.name}}', 'starting model deployment', current_timestamp)"
         post-hook: 'grant usage on schema {{target.this}} to role analyst'
         post-hook: 'grant select on {{this}} to role analyst'
+      staging:
+        materialized: view
+      marts:
+        materialized: table 
+        intermediate: 
+          materialized: ephemeral 
+      
+    
+ 

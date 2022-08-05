@@ -18,8 +18,8 @@ transformed as (
         row_number() over (
             partition by user_id 
             order by order_date, id
-        ) as user_order_seq
-
+        ) as user_order_seq,
+        _etl_loaded_at as updated_at
       from source
 )
 
