@@ -54,7 +54,7 @@ add_avg_order_values as (
 final as (
 
     select 
-
+        {{ dbt_utils.surrogate_key(['order_id', 'customer_id']) }} as id,
         order_id,
         customer_id,
         surname,

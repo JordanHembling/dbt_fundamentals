@@ -1,0 +1,7 @@
+version: 2 
+
+sources:
+  - name: public
+    database: covid19_by_starschema_dm
+    tables:
+      - name: jhu_vaccines
