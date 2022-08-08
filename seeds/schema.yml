@@ -5,6 +5,3 @@ seeds:
     description: a manual map of employees to cutomers 
     columns:
       - name: employee_id 
-        tests: 
-          - unique 
-          - not_null 
