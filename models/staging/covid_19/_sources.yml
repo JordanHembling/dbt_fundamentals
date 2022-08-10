@@ -1,7 +1,23 @@
 version: 2 
 
 sources:
-  - name: public
+  - name: covid_19
+    schema: public
     database: covid19_by_starschema_dm
     tables:
       - name: jhu_vaccines
+        columns:
+          - name: fips
+            tests:
+            - not_null
+        loaded_at_field: last_update_date
+        freshness: 
+          warn_after:
+            count: 2 
+            period: day
+      - name: jhu_covid_19
+        loaded_at_field: last_updated_date
+        freshness: 
+          warn_after:
+            count: 3
+            period: day

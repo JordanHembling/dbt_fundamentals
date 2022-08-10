@@ -1,0 +1,14 @@
+version: 2 
+
+models:
+  - name: stg_covid_19__jhu_covid_19
+    columns: 
+    - name: fips 
+      description: A column in my table 
+      tests: 
+      - not_null
+  - name: stg_jhu_vaccines
+    columns: 
+    - name: fips 
+      tests: 
+      - not_null

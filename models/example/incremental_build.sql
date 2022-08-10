@@ -9,7 +9,7 @@ Just re-process last 3 days of data, it will account for 99.9% of use cases. Has
 #}
 
 with events as (
-    select * from {{ source('public', 'jhu_vaccines') }}
+    select * from {{ source('covid_19', 'jhu_vaccines') }}
     {% if is_incremental() %}
     where last_update_date >= (select dateadd('day', -3, max(last_updated)) from {{this}})
     {% endif %}
