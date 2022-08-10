@@ -8,8 +8,6 @@ sources:
       - name: jhu_vaccines
         columns:
           - name: fips
-            tests:
-            - not_null
         loaded_at_field: last_update_date
         freshness: 
           warn_after:
