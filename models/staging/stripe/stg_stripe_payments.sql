@@ -18,5 +18,5 @@ transformed as (
 )
 
 select * from transformed
-{{ limit_data_in_dev('created_at', 13) }}
+{{ limit_data_in_dev('created_at', 13000) }}
 

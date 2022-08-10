@@ -13,10 +13,10 @@ Option #3: whenver a user has a new session, pull the user"s most recent session
 #}
 
 with events as (
-    select * from {{ source('public', 'jhu_vaccines') }}
+    select * from {{ source('covid_19', 'jhu_vaccines') }}
     {% if is_incremental() %}
     where province_state || date in (
-       select distinct province_state || date from {{ source('public', 'jhu_vaccines') }} 
+       select distinct province_state || date from {{ source('covid_19', 'jhu_vaccines') }} 
        where last_update_date >= (select dateadd('day', -3, max(last_updated)::date) from {{this}})
     )
     {% endif %}

@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('public', 'jhu_vaccines') }}
+    select * from {{ source('covid_19', 'jhu_vaccines') }}
 ),
 
 transformed as (
